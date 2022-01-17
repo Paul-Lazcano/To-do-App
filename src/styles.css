@@ -1,0 +1,129 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-color: #262626;
+    background-image: radial-gradient(circle, #292929, #202020, #181818, #0f0f0f, #000000);
+    color: #D9D7D7;
+    height: 100vh;
+    text-align: center;
+}
+
+h1, h2, h3, h4 {
+    font-weight: normal;
+}
+ul, ol {
+    list-style: none;
+}
+button {
+    border: none;
+    padding: .5rem;
+}
+input {
+    text-align: center;
+    border: none;
+}
+
+.wrapper {
+    display: grid;
+    row-gap: 3rem;
+    padding-block: 2rem;
+    width: 90%;
+    max-width: 50rem;
+    height: auto;
+    margin-inline: auto;
+}
+
+.counter {
+    align-self: center;
+    font-size: 2.5rem;
+    line-height: 3.5rem;
+    letter-spacing: .18rem;
+}
+
+.searcher {
+    justify-self: center;
+    align-self: center;
+    border-radius: .5rem;
+    color: #7c7c7c;
+    font-size: 1.5rem;
+    letter-spacing: .1rem;
+    width: 70%;
+    min-width: 15rem;
+    max-width: 30rem;
+    height: 3rem;
+}
+
+.todo-list {
+    display: flex;
+    flex-flow: column wrap;
+    row-gap: 3rem;
+    align-content: center;
+}
+.todo-list__item {
+    display: grid;
+    grid-template-areas: 
+        "a b"
+        "c c";
+    background-color: rgb(236, 236, 236);
+    color: #262626;
+    min-width: 20rem;
+    width: 60%;
+    max-width: 30rem;
+    min-height: 9rem;
+    height: auto;
+    border-radius: .5rem;
+    padding: 1rem 3rem;
+}
+.icon {
+    font-size: 2rem;
+    cursor: pointer;
+}
+.complete {
+    justify-self: start;
+    color: green;
+}
+.complete--cheked {
+    color: #D9D7D7;
+}
+.close {
+    grid-area: b;
+    justify-self: end;
+    color: #D92929;
+}
+.todo-list__task-name {
+    grid-area: c;
+    font-size: 2rem;
+    line-height: 2.7rem;
+    letter-spacing: .1rem;
+}
+.task-complete {
+    text-decoration: line-through;
+}
+.add-button {
+    justify-self: end;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    font-size: 3rem;
+    background-color: #D92929;
+    color: #D9D7D7;
+    cursor: pointer;
+    box-shadow: .1rem .1rem 3rem .5rem #732D2D;
+    opacity: .8;
+    transition: 300ms;
+}
+.add-button:active {
+    opacity: 1;
+    box-shadow: .1rem .1rem 3rem .8rem #732D2D;
+}
+
