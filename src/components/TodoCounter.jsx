@@ -1,7 +1,7 @@
 import React from 'react'
 
-export function TodoCounter() {
+export function TodoCounter({ total, completed }) {
     return (
-        <h1 className='counter'>Completaste 2 de tus 3 TODO's!</h1>
+        <h1 className='counter'>{`Has completado ${completed} de ${total}`}</h1>
     )
 }

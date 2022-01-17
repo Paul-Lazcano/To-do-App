@@ -38,7 +38,7 @@ input {
     row-gap: 3rem;
     padding-block: 2rem;
     width: 90%;
-    max-width: 50rem;
+    max-width: 70rem;
     height: auto;
     margin-inline: auto;
 }
@@ -57,56 +57,62 @@ input {
     color: #7c7c7c;
     font-size: 1.5rem;
     letter-spacing: .1rem;
-    width: 70%;
+    width: 100%;
     min-width: 15rem;
-    max-width: 30rem;
-    height: 3rem;
+    max-width: 70rem;
+    height: 5rem;
 }
 
 .todo-list {
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: row wrap;
     row-gap: 3rem;
-    align-content: center;
+    justify-content: center;
 }
 .todo-list__item {
     display: grid;
     grid-template-areas: 
-        "a b"
-        "c c";
+        "a c c b";
     background-color: rgb(236, 236, 236);
     color: #262626;
     min-width: 20rem;
-    width: 60%;
-    max-width: 30rem;
-    min-height: 9rem;
+    width: 100%;
+    max-width: 50rem;
+    min-height: 6rem;
     height: auto;
     border-radius: .5rem;
     padding: 1rem 3rem;
+    align-items: center;
 }
 .icon {
     font-size: 2rem;
     cursor: pointer;
+    width: 15%;
 }
-.complete {
+.icon-check {
     justify-self: start;
-    color: green;
+    color: #727272;
 }
-.complete--cheked {
-    color: #D9D7D7;
+.icon-check--active {
+    color: green;
 }
 .close {
     grid-area: b;
     justify-self: end;
-    color: #D92929;
+    color: #727272;
+}
+.close:active {
+    color: red;
 }
 .todo-list__task-name {
+    justify-self: center;
     grid-area: c;
     font-size: 2rem;
     line-height: 2.7rem;
     letter-spacing: .1rem;
+    width: 70%;
 }
-.task-complete {
+.todo-list__task-name--completed {
     text-decoration: line-through;
 }
 .add-button {

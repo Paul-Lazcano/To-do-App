@@ -1,7 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
+// ``
+//< > =>
+export function TodoSearch({ searchValue, setSearchValue }) {
+    const onSearchValueChange = (event) => {
+        setSearchValue(event.target.value);
+    };
 
-export function TodoSearch() {
-    return (
-        <input type="text" placeholder='Do homework' className='searcher'/>
-    );
+
+    return [
+        <input 
+            type="text"
+            placeholder='Do homework'
+            className='searcher'
+            value={searchValue}
+            onChange={onSearchValueChange}
+        />,
+    ];
 }
