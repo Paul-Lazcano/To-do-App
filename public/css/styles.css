@@ -93,6 +93,9 @@ input {
     justify-self: start;
     color: #727272;
 }
+.icon-check:hover {
+    color: green;
+}
 .icon-check--active {
     color: green;
 }
@@ -102,6 +105,9 @@ input {
     color: #727272;
 }
 .close:active {
+    color: red;
+}
+.close:hover {
     color: red;
 }
 .todo-list__task-name {
@@ -124,12 +130,16 @@ input {
     background-color: #D92929;
     color: #D9D7D7;
     cursor: pointer;
-    box-shadow: .1rem .1rem 3rem .5rem #732D2D;
+    box-shadow: .1rem .1rem 1rem .2rem #732D2D;
     opacity: .8;
     transition: 300ms;
 }
 .add-button:active {
     opacity: 1;
-    box-shadow: .1rem .1rem 3rem .8rem #732D2D;
+    box-shadow: .1rem .1rem 2rem .8rem #732D2D;
+}
+.state-text {
+    font-size: 1.8rem;
+    letter-spacing: .15rem;
 }
 

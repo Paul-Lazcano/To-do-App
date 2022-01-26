@@ -1,11 +1,8 @@
-import React, { useState } from 'react'
-// ``
-//< > =>
+import React from 'react'
 export function TodoSearch({ searchValue, setSearchValue }) {
     const onSearchValueChange = (event) => {
         setSearchValue(event.target.value);
     };
-
 
     return [
         <input 
