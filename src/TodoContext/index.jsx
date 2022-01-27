@@ -11,6 +11,8 @@ function TodoProvider(props) {
     error,
   } = useLocalStorage('TODOS_V1', []);
 
+  const [isComplete, setIsComplete] = useState(false);
+
   const [openModal, setOpenModal] = useState(false);
   
   const [searchValue, setSearchValue] = React.useState('');
@@ -37,15 +39,22 @@ function TodoProvider(props) {
     })
     saveTodos(newTodos);
   };
-  const completeTodo = (text) => {
-    const todoIndex = Array.isArray(todos) && todos.findIndex(todo => todo.taskName === text);
+  const completeTodo = (taskname) => {
+    const todoIndex = Array.isArray(todos) && todos.findIndex(todo => todo.taskName === taskname);
     const newTodos = [...todos];
     newTodos[todoIndex].isCompleted = true;
     saveTodos(newTodos);
   };
+  const toggleCompleteTodo = (taskname) => {
+    const todoIndex = Array.isArray(todos) && todos.findIndex(todo => todo.taskName === taskname);
+    const newTodos = [...todos];
+    newTodos[todoIndex].isCompleted = isComplete;
+    setIsComplete(prevState => !prevState);
+    saveTodos(newTodos);
+  }
 
-  const deleteTodo = (text) => {
-    const todoIndex = Array.isArray(todos) && todos.findIndex(todo => todo.taskName === text);
+  const deleteTodo = (taskname) => {
+    const todoIndex = Array.isArray(todos) && todos.findIndex(todo => todo.taskName === taskname);
     const newTodos = [...todos];
     newTodos.splice(todoIndex, 1);
     saveTodos(newTodos);
@@ -61,6 +70,7 @@ function TodoProvider(props) {
       setSearchValue,
       searchedTodos,
       addTodo,
+      toggleCompleteTodo,
       completeTodo,
       deleteTodo,
       openModal,

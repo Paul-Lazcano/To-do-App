@@ -14,6 +14,7 @@ export function AppUI() {
         error,
         loading,
         searchedTodos,
+        toggleCompleteTodo,
         completeTodo,
         deleteTodo,
         searchValue,
@@ -35,7 +36,7 @@ export function AppUI() {
                         key={taskName}
                         text={taskName}
                         completed={isCompleted}
-                        onComplete={() => completeTodo(taskName)}
+                        onComplete={() => toggleCompleteTodo(taskName)}
                         onDelete={() => deleteTodo(taskName)}
                     />
                 ))}
