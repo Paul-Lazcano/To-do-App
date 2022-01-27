@@ -5,6 +5,8 @@ import { TodoSearch } from "./components/TodoSearch";
 import { TodoList } from "./components/TodoList";
 import { TodoItem } from "./components/TodoItem";
 import { CreateTodoButton } from "./components/CreateTodoButton";
+import { Modal } from "./modal/Modal";
+import { TodoForm } from "./components/TodoForm"
 
 export function AppUI() {
     const value = useContext(TodoContext)
@@ -16,6 +18,7 @@ export function AppUI() {
         deleteTodo,
         searchValue,
         setSearchValue,
+        openModal,
     } = value;
     return (
         <Fragment>
@@ -23,7 +26,6 @@ export function AppUI() {
             <TodoSearch setSearchValue={setSearchValue} searchValue={searchValue}/>
             
             <TodoList>
-
                 {error && <p className='state-text'>Desesperate, hubo un error</p>}
                 {loading && <p className='state-text'>Estamos cargando, no desesperes...</p>}
                 {!loading && (!searchedTodos.length) && <p className='state-text'>Crea tu primer TODO!</p>}
@@ -40,6 +42,12 @@ export function AppUI() {
 
             </TodoList>
                 
+            {openModal && (
+                <Modal>
+                    <TodoForm />
+                </Modal>
+            )}
+
             <CreateTodoButton />
             
         </Fragment>

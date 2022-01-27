@@ -14,7 +14,7 @@ body {
     background-color: #262626;
     background-image: radial-gradient(circle, #292929, #202020, #181818, #0f0f0f, #000000);
     color: #D9D7D7;
-    height: 100vh;
+    min-height: 100vh;
     text-align: center;
 }
 
@@ -24,22 +24,21 @@ h1, h2, h3, h4 {
 ul, ol {
     list-style: none;
 }
-button {
-    border: none;
-    padding: .5rem;
-}
 input {
     text-align: center;
     border: none;
+}
+textarea:focus {
+    outline-color: #fff;
 }
 
 .wrapper {
     display: grid;
     row-gap: 3rem;
-    padding-block: 2rem;
+    padding-block: 15%;
     width: 90%;
     max-width: 70rem;
-    height: auto;
+    min-height: 100%;
     margin-inline: auto;
 }
 
@@ -55,12 +54,12 @@ input {
     align-self: center;
     border-radius: .5rem;
     color: #7c7c7c;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     letter-spacing: .1rem;
-    width: 100%;
+    width: 90%;
     min-width: 15rem;
     max-width: 70rem;
-    height: 5rem;
+    height: 7rem;
 }
 
 .todo-list {
@@ -68,6 +67,7 @@ input {
     flex-flow: row wrap;
     row-gap: 3rem;
     justify-content: center;
+    margin-block-end: 5rem;
 }
 .todo-list__item {
     display: grid;
@@ -117,29 +117,121 @@ input {
     line-height: 2.7rem;
     letter-spacing: .1rem;
     width: 70%;
+    white-space: initial;
+    overflow: hidden;
 }
 .todo-list__task-name--completed {
     text-decoration: line-through;
 }
-.add-button {
-    justify-self: end;
+.FAB {
+    position: fixed;
+    bottom: 2.4rem;
+    right: 2.4rem;
+    border: none;
+    border-radius: 50%;
+    background-color: rgb(255, 247, 0);
+    color: #202020;
+    cursor: pointer;
     width: 8rem;
     height: 8rem;
-    border-radius: 50%;
-    font-size: 3rem;
-    background-color: #D92929;
-    color: #D9D7D7;
-    cursor: pointer;
-    box-shadow: .1rem .1rem 1rem .2rem #732D2D;
+    box-shadow: 0 .5rem 2.5rem rgba(109, 109, 109, .5);
     opacity: .8;
-    transition: 300ms;
+    
+    transform: rotate(0deg);
+    transition: 100ms ease-out;
 }
-.add-button:active {
+.FAB:active {
     opacity: 1;
-    box-shadow: .1rem .1rem 2rem .8rem #732D2D;
+    
+}
+.FAB__icon {
+    font-size: 4rem;
+}
+.open-modal {
+    transform: rotate(240deg);
 }
 .state-text {
     font-size: 1.8rem;
     letter-spacing: .15rem;
 }
 
+.modal-bg {
+    background-color: rgba(33, 33, 33, .8);
+    position: fixed;
+    top: -1rem;
+    left: -1rem;
+    right: -1rem;
+    bottom: -1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+    font-weight: lighter;
+}
+
+.form {
+    display: flex;
+    flex-flow: column wrap;
+    row-gap: 2rem;
+    align-items: center;
+    width: 80%;
+    min-width: 30rem;
+    max-width: 70rem;
+    background-color: #181818;
+    padding: 3rem 1rem;
+    border-radius: 1rem;
+}
+.form__label {
+    font-size: 2.8rem;
+    font-weight: lighter;
+    letter-spacing: .2rem;
+}
+.form__text-area {
+    min-width: 25rem;
+    max-width: 25rem;
+    min-height: 10rem;
+    max-height: 10rem;
+    border: none;
+    padding: 1rem 1.5rem;
+    border-radius: .5rem;
+    box-shadow: 0 .5rem 2.5rem rgba(109, 109, 109, .5);
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 2.2rem;
+    color: #727272;
+}
+.form__text-area:focus {
+    outline-color: #D92929;
+}
+.form__button-container {
+    display: flex;
+    flex-flow: row wrap;
+    column-gap: 2rem;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.form__button {
+    width: 12rem;
+    height: 4.8rem;
+    border: none;
+    border-radius: .2rem;
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+    font-weight: lighter;
+    font-size: 1.8rem;
+    color: #D9D7D7;
+    transition: 300ms;
+    background-color: #292929;
+}
+.form__button--close {
+    background-color: transparent;
+
+}
+.form__button--close:active,
+.form__button--close:hover {
+    color: #D92929;
+}
+.form__button--add:active,
+.form__button--add:hover {
+    color: rgb(255, 247, 0);
+}

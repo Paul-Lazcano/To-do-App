@@ -1,16 +1,18 @@
-import React from 'react'
-
-export function CreateTodoButton(props) {
-    const onClickButton = (message) => {
-        alert(message);
+import React, {useContext} from 'react'
+import { TodoContext } from '../TodoContext';
+export function CreateTodoButton() {
+    const {setOpenModal} = useContext(TodoContext)
+    const toggleModal = () => {
+        setOpenModal(prevState => !prevState);
     }
+
     return (
 
         <button 
-            className='add-button'
-            onClick={() => onClickButton('Hiciste click en el +')}
+            className='FAB'
+            onClick={toggleModal}
         >
-            +
+            <span className='FAB__icon'>+</span>
         </button>
     );
 }
