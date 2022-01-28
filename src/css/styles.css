@@ -101,9 +101,6 @@ input {
 .icon-check {
     color: #727272;
 }
-.icon-check:hover {
-    color: green;
-}
 .icon-check--active {
     color: green;
 }
