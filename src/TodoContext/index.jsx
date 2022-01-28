@@ -11,9 +11,9 @@ function TodoProvider(props) {
     error,
   } = useLocalStorage('TODOS_V1', []);
 
-  const [isComplete, setIsComplete] = useState(false);
-
   const [openModal, setOpenModal] = useState(false);
+  const [openForm, setOpenForm] = useState(false);
+  const [openCloseWindow, setOpenCloseWindow] = useState(false);
   
   const [searchValue, setSearchValue] = React.useState('');
 
@@ -26,35 +26,40 @@ function TodoProvider(props) {
   } else {
       searchedTodos = todos.filter(todo => {
         const todoText = todo.taskName.toLowerCase();
+        const todoTitle = todo.title.toLowerCase();
+        const todoDate = todo.date.toLowerCase();
         const searchText = searchValue.toLowerCase();
-        return todoText.includes(searchText);
+        return todoText.includes(searchText) || todoTitle.includes(searchText) || todoDate.includes(searchText);
       })
   }
 
-  const addTodo = (taskName) => {
+  const addTodo = (title, taskName, date) => {
     const newTodos = [...todos];
     Array.isArray(newTodos) && newTodos.push({
+      title,
       taskName,
       isCompleted: false,
+      date,
     })
     saveTodos(newTodos);
   };
-  const completeTodo = (taskname) => {
-    const todoIndex = Array.isArray(todos) && todos.findIndex(todo => todo.taskName === taskname);
+  const toggleCompleteTodo = (taskName, date, title) => {
+    const todoIndex = Array.isArray(todos) 
+      &&  todos.findIndex((todo) => (
+            todo.taskName === taskName && todo.date === date && todo.title === title
+          ));
     const newTodos = [...todos];
-    newTodos[todoIndex].isCompleted = true;
-    saveTodos(newTodos);
-  };
-  const toggleCompleteTodo = (taskname) => {
-    const todoIndex = Array.isArray(todos) && todos.findIndex(todo => todo.taskName === taskname);
-    const newTodos = [...todos];
-    newTodos[todoIndex].isCompleted = isComplete;
-    setIsComplete(prevState => !prevState);
+    newTodos[todoIndex].isCompleted = !newTodos[todoIndex].isCompleted
     saveTodos(newTodos);
   }
-
-  const deleteTodo = (taskname) => {
-    const todoIndex = Array.isArray(todos) && todos.findIndex(todo => todo.taskName === taskname);
+  const openClosePart = () => {
+    setOpenCloseWindow(true);
+  }
+  const deleteTodo = (taskName, date, title) => {
+    const todoIndex = Array.isArray(todos) 
+      &&  todos.findIndex((todo) => (
+            todo.taskName === taskName && todo.date === date && todo.title === title
+          ));
     const newTodos = [...todos];
     newTodos.splice(todoIndex, 1);
     saveTodos(newTodos);
@@ -71,10 +76,14 @@ function TodoProvider(props) {
       searchedTodos,
       addTodo,
       toggleCompleteTodo,
-      completeTodo,
       deleteTodo,
       openModal,
       setOpenModal,
+      openForm,
+      setOpenForm,
+      openCloseWindow,
+      setOpenCloseWindow,
+      openClosePart,
     }}>
       {props.children}
     </TodoContext.Provider>

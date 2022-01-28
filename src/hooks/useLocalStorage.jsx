@@ -17,14 +17,13 @@ export function useLocalStorage(itemName, initialValue = []) {
         } else {
           parsedItem = JSON.parse(localStorageItem);
         }
-
         setItem(parsedItem);
         setLoading(false);
       } catch(error) {
         setError(error);
       }
     }, 1000);
-  });
+  }, [itemName,initialValue]);
   
   const saveItem = (newItem) => {
     try {

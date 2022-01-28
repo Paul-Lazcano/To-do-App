@@ -6,11 +6,11 @@ export function TodoCounter() {
         
     if(!!totalTodos) {
         return (
-            <h1 className='counter'>{`Has completado ${completedTodos || 0} de ${totalTodos || 0} todo's`}</h1>
+            <h1 className='counter'>{`Has completado ${completedTodos || 0} de ${totalTodos || 0} tareas`}</h1>
         ) 
     } else {
         return (
-            <h1 className="counter">No has agregado ningún to-do</h1>
+            <h1 className="counter">No has agregado ninguna tarea</h1>
         )
     }
         

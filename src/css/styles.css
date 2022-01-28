@@ -28,9 +28,6 @@ input {
     text-align: center;
     border: none;
 }
-textarea:focus {
-    outline-color: #fff;
-}
 
 .wrapper {
     display: grid;
@@ -67,12 +64,12 @@ textarea:focus {
     flex-flow: row wrap;
     row-gap: 3rem;
     justify-content: center;
-    margin-block-end: 5rem;
+    margin-block-end: 7rem;
 }
 .todo-list__item {
-    display: grid;
-    grid-template-areas: 
-        "a c c b";
+    display: flex;
+    flex-flow: row wrap;
+    row-gap: 2rem;
     background-color: rgb(236, 236, 236);
     color: #262626;
     min-width: 20rem;
@@ -81,16 +78,27 @@ textarea:focus {
     min-height: 6rem;
     height: auto;
     border-radius: .5rem;
-    padding: 1rem 3rem;
+    padding: 1.3rem 3rem;
     align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: 300ms;
+}
+.todo-list__item-completed {
+    background-color: rgb(176, 176, 176);
+}
+.todo-list__icon-container {
+    display: flex;
+    justify-content: space-around;
+    order: 1;
+    width: 100%;
 }
 .icon {
-    font-size: 2rem;
+    font-size: 2.4rem;
     cursor: pointer;
-    width: 15%;
+    width: 10%;
 }
 .icon-check {
-    justify-self: start;
     color: #727272;
 }
 .icon-check:hover {
@@ -100,8 +108,6 @@ textarea:focus {
     color: green;
 }
 .close {
-    grid-area: b;
-    justify-self: end;
     color: #727272;
 }
 .close:active {
@@ -110,15 +116,32 @@ textarea:focus {
 .close:hover {
     color: red;
 }
+.todo-list__title {
+    order: 2;
+    font-size: 3.2rem;
+    letter-spacing: 0.16rem;
+    min-width: 100%;
+    max-width: 100%;
+}
 .todo-list__task-name {
-    justify-self: center;
-    grid-area: c;
-    font-size: 2rem;
+    order: 4;
+    font-size: 2.4rem;
     line-height: 2.7rem;
     letter-spacing: .1rem;
-    width: 70%;
+    width: 100%;
+    font-weight: lighter;
     white-space: initial;
     overflow: hidden;
+}
+.todo-list__date {
+    width: 40%;
+    min-width: 30%;
+    max-width: 40%;
+    order: 5;
+    padding: 1rem;
+    font-size: 1.4rem;
+    font-weight: bold;
+    border: .1rem solid #202020;
 }
 .todo-list__task-name--completed {
     text-decoration: line-through;
@@ -173,18 +196,47 @@ textarea:focus {
     display: flex;
     flex-flow: column wrap;
     row-gap: 2rem;
+    justify-content: space-evenly;
     align-items: center;
     width: 80%;
+    min-height: 50%;
     min-width: 30rem;
     max-width: 70rem;
     background-color: #181818;
     padding: 3rem 1rem;
     border-radius: 1rem;
+    margin-bottom: 15rem;
 }
 .form__label {
     font-size: 2.8rem;
     font-weight: lighter;
     letter-spacing: .2rem;
+}
+.form__text-container {
+    display: flex;
+    flex-flow: column wrap;
+    row-gap: 2rem;
+    align-items: center;
+}
+.form__input {
+    height: 3rem;
+    width: 80%;
+    padding: 1rem 1.5rem;
+    border-radius: .5rem;
+    box-shadow: 0 .5rem 2.5rem rgba(109, 109, 109, .5);
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.8rem;
+    color: #727272;
+}
+.form__date {
+    height: 3rem;
+    width: 50%;
+    padding: 1rem 1.5rem;
+    border-radius: .5rem;
+    box-shadow: 0 .5rem 2.5rem rgba(109, 109, 109, .5);
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.8rem;
+    color: #727272;
 }
 .form__text-area {
     min-width: 25rem;
@@ -195,10 +247,10 @@ textarea:focus {
     padding: 1rem 1.5rem;
     border-radius: .5rem;
     box-shadow: 0 .5rem 2.5rem rgba(109, 109, 109, .5);
-    text-align: center;
     font-family: 'Roboto', sans-serif;
     font-size: 2.2rem;
     color: #727272;
+    text-align: center;
 }
 .form__text-area:focus {
     outline-color: #D92929;
