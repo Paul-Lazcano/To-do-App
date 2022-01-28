@@ -1,12 +1,22 @@
 import React from 'react'
 
 export function TodoItem({ title, text, date, completed, onComplete, onDelete, onOpenClosePart }) {
+    
+    const toggleCompleteColor = evt => {
+        onComplete()
+        if(!completed){
+            evt.target.classList.add('icon-check--active')
+        } else {
+            evt.target.classList.remove('icon-check--active')
+        }
+    }
+    
     return (
         <li className={`todo-list__item ${completed && 'todo-list__item-completed'}`}>
             <div className="todo-list__icon-container">
                 <span
-                    className={`icon icon-check ${completed && 'icon-check--active'}`}
-                    onClick={onComplete}
+                    className={`icon icon-check`}
+                    onClick={toggleCompleteColor}
                 >
                     ✔
                 </span>
