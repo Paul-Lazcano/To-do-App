@@ -1,26 +1,20 @@
-import React, {useContext} from 'react';
+import React, { useContext } from "react";
 import { TodoContext } from "../TodoContext/index";
-export function CloseWindow() {
-    const {
-        deleteTodo,
-        setOpenModal,
-        setOpenCloseWindow
-    } = useContext(TodoContext);
-    
-    
-    
-    //evento de cancelar
-    const closeWindow = evt => {
-        setOpenModal(false);
-        setOpenCloseWindow(false);
-    };
-    
-    
-    return (
-        <section>
-            <h3>Seguro que quieres borrar la tarea?</h3>
-            <button>Si</button>
-            <button onClick={closeWindow}>No</button>
-        </section>
-    )
+export function CloseWindow({ onDismiss }) {
+  const { setOpenModal, setOpenCloseWindow, setClose, close } =
+    useContext(TodoContext);
+
+  return (
+    <section className="close-window">
+      <h3 className="todo-list__title">¿Seguro que quieres borrar la tarea?</h3>
+      <button
+        onClick={() => {
+          setClose(true);
+        }}
+      >
+        Si
+      </button>
+      <button onClick={onDismiss}>No</button>
+    </section>
+  );
 }

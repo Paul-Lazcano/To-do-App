@@ -1,9 +1,5 @@
-import React from 'react';
+import React from "react";
 
-export function TodoList({children}) {
-    return (
-        <ul className="todo-list">
-            {children}
-        </ul>
-    );
+export function TodoList({ children }) {
+  return <ul className="todo-list">{children}</ul>;
 }
