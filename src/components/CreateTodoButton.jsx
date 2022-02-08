@@ -1,7 +1,5 @@
-import React, { useContext } from "react";
-import { TodoContext } from "../TodoContext";
-export function CreateTodoButton() {
-  const { setOpenModal, setOpenForm } = useContext(TodoContext);
+import React from "react";
+export function CreateTodoButton({ setOpenModal, setOpenForm }) {
   const toggleModal = () => {
     setOpenModal((prevState) => !prevState);
     setOpenForm((prevState) => !prevState);

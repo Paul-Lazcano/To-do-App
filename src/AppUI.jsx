@@ -1,5 +1,6 @@
-import React, { Fragment, useContext } from "react";
+import React, { useContext } from "react";
 import { TodoContext } from "./TodoContext/index";
+import { TodoHeader } from "./components/TodoHeader";
 import { TodoCounter } from "./components/TodoCounter";
 import { TodoSearch } from "./components/TodoSearch";
 import { TodoList } from "./components/TodoList";
@@ -22,18 +23,25 @@ export function AppUI() {
     openModal,
     openForm,
     openCloseWindow,
+    completedTodos,
+    totalTodos,
+    setOpenModal,
+    setOpenForm,
+    addTodo,
     toggleModalAndCloseWindow,
   } = value;
   return (
-    <Fragment>
-      <TodoCounter />
-      <TodoSearch setSearchValue={setSearchValue} searchValue={searchValue} />
+    <>
+      <TodoHeader>
+        <TodoCounter totalTodos={totalTodos} completedTodos={completedTodos} />
+        <TodoSearch setSearchValue={setSearchValue} searchValue={searchValue} />
+      </TodoHeader>
 
       <TodoList>
         {error && <p className="state-text">Desesperate, hubo un error</p>}
         {loading && (
-          <div className='loading-state'>
-          <p className="state-text">Estamos cargando, no desesperes...</p>
+          <div className="loading-state">
+            <p className="state-text">Estamos cargando, no desesperes...</p>
           </div>
         )}
         {!loading && !searchedTodos.length && (
@@ -56,7 +64,11 @@ export function AppUI() {
       </TodoList>
       {openModal && openForm && (
         <Modal>
-          <TodoForm />
+          <TodoForm
+            addTodo={addTodo}
+            setOpenForm={setOpenForm}
+            setOpenModal={setOpenModal}
+          />
         </Modal>
       )}
       {openModal && openCloseWindow && (
@@ -65,7 +77,7 @@ export function AppUI() {
         </Modal>
       )}
 
-      <CreateTodoButton />
-    </Fragment>
+      <CreateTodoButton setOpenModal={setOpenModal} setOpenForm={setOpenForm} />
+    </>
   );
 }

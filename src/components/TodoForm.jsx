@@ -1,11 +1,9 @@
-import React, { useContext, useState } from "react";
-import { TodoContext } from "../TodoContext/index";
-export function TodoForm() {
+import React, { useState } from "react";
+export function TodoForm({ addTodo, setOpenModal, setOpenForm }) {
   const [newTodoValue, setNewTodoValue] = useState("");
   const [newTitleValue, setNewTitleValue] = useState("");
   const [newDate, setNewDate] = useState("");
   const [labelText, setLabelText] = useState("Escribe tu nueva tarea!");
-  const { addTodo, setOpenModal, setOpenForm } = useContext(TodoContext);
 
   //eventos del teclado
   const preventSubmitWithEnter = (evt) => {
