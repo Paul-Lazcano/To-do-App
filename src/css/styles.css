@@ -74,6 +74,9 @@ input {
   max-width: 70rem;
   height: 7rem;
 }
+.searcher:disabled {
+  opacity: 75%;
+}
 
 .todo-list {
   display: flex;

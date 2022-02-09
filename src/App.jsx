@@ -34,8 +34,16 @@ export function App() {
   return (
     <>
       <TodoHeader>
-        <TodoCounter totalTodos={totalTodos} completedTodos={completedTodos} />
-        <TodoSearch setSearchValue={setSearchValue} searchValue={searchValue} />
+        <TodoCounter
+          totalTodos={totalTodos}
+          completedTodos={completedTodos}
+          loading={loading}
+        />
+        <TodoSearch
+          setSearchValue={setSearchValue}
+          searchValue={searchValue}
+          loading={loading}
+        />
       </TodoHeader>
 
       <TodoList
@@ -47,7 +55,9 @@ export function App() {
         onError={() => <TodoError />}
         onLoading={() => <TodoLoading />}
         onEmptyTodos={() => <EmptyTodos />}
-        onEmptySearchResults={(searchText) => <p className="state-text">No hay resultados para "{searchText}"</p> }
+        onEmptySearchResults={(searchText) => (
+          <p className="state-text">No hay resultados para "{searchText}"</p>
+        )}
         render={({ taskName, title, date, isCompleted }) => (
           <TodoItem
             key={`${taskName}${title}${date}`}
