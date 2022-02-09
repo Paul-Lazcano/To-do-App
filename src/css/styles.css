@@ -39,6 +39,12 @@ input {
   text-align: center;
   border: none;
 }
+.header {
+  display: flex;
+  flex-flow: column wrap;
+  row-gap: 2rem;
+  align-items: center;
+}
 .loading-state {
   padding: 3rem;
   background-color: #282828;
@@ -300,4 +306,61 @@ input {
 .form__button--add:active,
 .form__button--add:hover {
   color: rgb(255, 247, 0);
+}
+
+.change-message {
+  position: fixed;
+  top: -1rem;
+  right: -1rem;
+  bottom: -1rem;
+  left: -1rem;
+  row-gap: 1rem;
+  width: 50%;
+  min-width: 25rem;
+  max-width: 40rem;
+  padding: 2rem;
+  border-radius: .5rem;
+}
+.change-message__background {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  background-color: #0f0f0f50;
+}
+.change-message__text-container {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 80%;
+  max-width: 40rem;
+  min-width: 30rem;
+  padding: 2rem;
+  background-color: #181818;
+  border-radius: .5rem .5rem 0 0;
+  height: 25rem;
+}
+.change-message__text {
+  font-size: 1.8rem;
+  letter-spacing: .15rem;
+  color: #d9d7d7;
+}
+.change-message__button {
+  width: 50%;
+  height: 7rem;
+  padding: .5rem;
+  border: none;
+  border-radius: .5rem;
+  background-color: #0f0f0f;
+  color: #d9d7d7;
+  cursor: pointer;
+  font-family: "Roboto", sans-serif;
+  font-weight: lighter;
+  font-size: 1.8rem;
 }

@@ -16,6 +16,7 @@ export function TodoList(props) {
 
       <ul className="todo-list">
         {Array.isArray(props.searchedTodos) &&
+          !props.loading &&
           props.searchedTodos.map(props.render || props.children)}
       </ul>
     </>

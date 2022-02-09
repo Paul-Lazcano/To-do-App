@@ -7,6 +7,7 @@ function useTodos() {
     saveItem: saveTodos,
     loading,
     error,
+    sincronizeItem: sincronizeTodos,
   } = useLocalStorage("TODOS_V1", []);
 
   const [openModal, setOpenModal] = useState(false);
@@ -92,6 +93,7 @@ function useTodos() {
     setOpenForm,
     close,
     setClose,
+    sincronizeTodos,
   };
 }
 

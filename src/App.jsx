@@ -11,6 +11,7 @@ import { CreateTodoButton } from "./components/CreateTodoButton";
 import { Modal } from "./modal/Modal";
 import { TodoForm } from "./components/TodoForm";
 import { useTodos } from "./hooks/useTodos";
+import { ChangeAlertWithStorageListener } from "./components/ChangeAlert/ChangeAlert";
 import "./css/styles.css";
 
 export function App() {
@@ -30,6 +31,7 @@ export function App() {
     setOpenForm,
     addTodo,
     toggleModalAndCloseWindow,
+    sincronizeTodos,
   } = useTodos();
   return (
     <>
@@ -37,14 +39,15 @@ export function App() {
         <TodoCounter
           totalTodos={totalTodos}
           completedTodos={completedTodos}
-          // loading={loading}
+        // loading={loading}
         />
         <TodoSearch
           setSearchValue={setSearchValue}
           searchValue={searchValue}
-          // loading={loading}
+        // loading={loading}
         />
       </TodoHeader>
+
 
       <TodoList
         error={error}
@@ -94,8 +97,10 @@ export function App() {
           />
         </Modal>
       )}
-
       <CreateTodoButton setOpenModal={setOpenModal} setOpenForm={setOpenForm} />
+
+      <ChangeAlertWithStorageListener sincronizeTodos={sincronizeTodos} />
+
     </>
   );
 }
