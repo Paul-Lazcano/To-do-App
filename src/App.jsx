@@ -33,16 +33,16 @@ export function App() {
   } = useTodos();
   return (
     <>
-      <TodoHeader>
+      <TodoHeader loading={loading}>
         <TodoCounter
           totalTodos={totalTodos}
           completedTodos={completedTodos}
-          loading={loading}
+          // loading={loading}
         />
         <TodoSearch
           setSearchValue={setSearchValue}
           searchValue={searchValue}
-          loading={loading}
+          // loading={loading}
         />
       </TodoHeader>
 
