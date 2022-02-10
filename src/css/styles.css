@@ -215,7 +215,7 @@ input {
   bottom: -1rem;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: end;
   font-size: 1.8rem;
   font-weight: lighter;
 }
