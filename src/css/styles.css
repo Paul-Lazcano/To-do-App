@@ -114,17 +114,24 @@ input {
 }
 .todo-list__icon-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  align-items: center;
   order: 1;
   width: 100%;
 }
 .icon {
   font-size: 2.4rem;
   cursor: pointer;
-  width: 10%;
 }
 .icon-check {
   color: #727272;
+}
+.icon-edit {
+  color: #727272;
+  font-size: 1.6rem;
+}
+.icon-edit--disabled {
+  display: none;
 }
 .icon-check--active {
   color: green;
@@ -251,7 +258,8 @@ input {
 }
 .form__date {
   height: 3rem;
-  width: 50%;
+  width: 70%;
+  height: 4rem;
   padding: 1rem 1.5rem;
   border-radius: 0.5rem;
   box-shadow: 0 0.5rem 2.5rem rgba(109, 109, 109, 0.5);

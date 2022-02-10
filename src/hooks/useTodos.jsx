@@ -13,6 +13,8 @@ function useTodos() {
   const [openModal, setOpenModal] = useState(false);
   const [openForm, setOpenForm] = useState(false);
   const [close, setClose] = useState(false);
+  const [openEdit, setOpenEdit] = useState(false);
+  const [currentTodo, setCurrentTodo] = useState({});
 
   const [searchValue, setSearchValue] = React.useState("");
 
@@ -39,37 +41,41 @@ function useTodos() {
   }
 
   const addTodo = (title, taskName, date) => {
+    const newTodo = { title, taskName, isCompleted: false, date, id: new Date() }
     const newTodos = [...todos];
     Array.isArray(newTodos) &&
-      newTodos.push({
-        title,
-        taskName,
-        isCompleted: false,
-        date,
-      });
+      newTodos.push(newTodo);
     saveTodos(newTodos);
   };
-  const toggleCompleteTodo = (taskName, date, title) => {
+
+  const toggleCompleteTodo = (id) => {
     const todoIndex =
       Array.isArray(todos) &&
       todos.findIndex(
-        (todo) =>
-          todo.taskName === taskName &&
-          todo.date === date &&
-          todo.title === title
+        (todo) => todo.id === id
       );
     const newTodos = [...todos];
     newTodos[todoIndex].isCompleted = !newTodos[todoIndex].isCompleted;
     saveTodos(newTodos);
   };
-  const deleteTodo = (taskName, date, title) => {
+  const editTodos = (id, title, taskName, date) => {
+    const todoIndex =
+      Array.isArray(todos) &&
+      todos.findIndex(
+        (todo) => todo.id === id
+      );
+    const newTodos = [...todos];
+    newTodos[todoIndex].title = title;
+    newTodos[todoIndex].taskName = taskName;
+    newTodos[todoIndex].date = date;
+    saveTodos(newTodos);
+  };
+  const deleteTodo = (id) => {
     const todoIndex =
       Array.isArray(todos) &&
       todos.findIndex(
         (todo) =>
-          todo.taskName === taskName &&
-          todo.date === date &&
-          todo.title === title
+          todo.id === id
       );
     const newTodos = [...todos];
     newTodos.splice(todoIndex, 1);
@@ -94,6 +100,11 @@ function useTodos() {
     close,
     setClose,
     sincronizeTodos,
+    openEdit,
+    setOpenEdit,
+    editTodos,
+    currentTodo,
+    setCurrentTodo,
   };
 }
 

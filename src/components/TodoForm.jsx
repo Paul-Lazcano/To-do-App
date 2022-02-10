@@ -28,7 +28,7 @@ export function TodoForm({ addTodo, setOpenModal, setOpenForm }) {
     setNewDate(evt.target.value);
   };
   //evento de cancelar
-  const onCancel = (evt) => {
+  const onCancel = () => {
     setOpenModal(false);
     setOpenForm(false);
   };
@@ -69,7 +69,7 @@ export function TodoForm({ addTodo, setOpenModal, setOpenForm }) {
         />
         <input
           value={newDate}
-          type="text"
+          type="date"
           placeholder="20/08/2022"
           className="form__date"
           onKeyDown={preventSubmitWithEnter}

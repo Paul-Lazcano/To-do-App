@@ -12,6 +12,8 @@ import { Modal } from "./modal/Modal";
 import { TodoForm } from "./components/TodoForm";
 import { useTodos } from "./hooks/useTodos";
 import { ChangeAlert } from "./components/ChangeAlert/ChangeAlert";
+import { Menu } from './components/Menu/Menu';
+import { EditTodo } from "./components/EditTodo";
 import "./css/styles.css";
 
 export function App() {
@@ -30,8 +32,12 @@ export function App() {
     setOpenModal,
     setOpenForm,
     addTodo,
-    toggleModalAndCloseWindow,
     sincronizeTodos,
+    openEdit,
+    setOpenEdit,
+    editTodos,
+    setCurrentTodo,
+    currentTodo,
   } = useTodos();
   return (
     <>
@@ -46,6 +52,9 @@ export function App() {
           searchValue={searchValue}
         // loading={loading}
         />
+        <Menu>
+          <></>
+        </Menu>
       </TodoHeader>
 
 
@@ -61,34 +70,24 @@ export function App() {
         onEmptySearchResults={(searchText) => (
           <p className="state-text">No hay resultados para "{searchText}"</p>
         )}
-        render={({ taskName, title, date, isCompleted }) => (
+        render={({ taskName, title, date, isCompleted, id }) => (
           <TodoItem
-            key={`${taskName}${title}${date}`}
+            key={id}
+            id={id}
             title={title}
             text={taskName}
             date={date}
             completed={isCompleted}
-            onComplete={() => toggleCompleteTodo(taskName, date, title)}
-            onOpenClosePart={toggleModalAndCloseWindow}
-            onDelete={() => deleteTodo(taskName, date, title)}
+            setCurrentTodo={setCurrentTodo}
+            setOpenModal={setOpenModal}
+            setOpenEdit={setOpenEdit}
+            onComplete={() => toggleCompleteTodo(id)}
+            onDelete={() => deleteTodo(id)}
           />
         )}
-      >
-        {({ taskName, title, date, isCompleted }) => (
-          <TodoItem
-            key={`${taskName}${title}${date}`}
-            title={title}
-            text={taskName}
-            date={date}
-            completed={isCompleted}
-            onComplete={() => toggleCompleteTodo(taskName, date, title)}
-            onOpenClosePart={toggleModalAndCloseWindow}
-            onDelete={() => deleteTodo(taskName, date, title)}
-          />
-        )}
-      </TodoList>
+      />
 
-      {openModal && openForm && (
+      {openForm && openModal && (
         <Modal>
           <TodoForm
             addTodo={addTodo}
@@ -97,6 +96,19 @@ export function App() {
           />
         </Modal>
       )}
+
+      {openEdit && openModal && (
+        <Modal>
+          <EditTodo
+            addTodo={addTodo}
+            setOpenModal={setOpenForm}
+            setOpenEdit={setOpenEdit}
+            onCompleteEdit={editTodos}
+            currentTodo={currentTodo}
+          />
+        </Modal>
+      )}
+
       <CreateTodoButton setOpenModal={setOpenModal} setOpenForm={setOpenForm} />
 
       <ChangeAlert sincronize={sincronizeTodos} />

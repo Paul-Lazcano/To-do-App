@@ -1,8 +1,8 @@
 import React from "react";
 export function CreateTodoButton({ setOpenModal, setOpenForm }) {
   const toggleModal = () => {
-    setOpenModal((prevState) => !prevState);
-    setOpenForm((prevState) => !prevState);
+    setOpenModal(true);
+    setOpenForm(true);
   };
 
   return (
