@@ -53,8 +53,17 @@ export const EditTodo = ({ setOpenModal, setOpenEdit, onCompleteEdit, currentTod
             value={taskName}
             onChange={onTaskNameWrite}
           />
+          <p className="change-message__text">Elige una fecha</p>
           <input
             type="date"
+            placeholder='14/08/2022'
+            className='form__date'
+            value={date}
+            onChange={onDateWrite}
+          />
+          <p className="change-message__text">O si prefieres escribirla</p>
+          <input
+            type="text"
             placeholder='14/08/2022'
             className='form__date'
             value={date}
