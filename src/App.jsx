@@ -11,7 +11,7 @@ import { CreateTodoButton } from "./components/CreateTodoButton";
 import { Modal } from "./modal/Modal";
 import { TodoForm } from "./components/TodoForm";
 import { useTodos } from "./hooks/useTodos";
-import { ChangeAlertWithStorageListener } from "./components/ChangeAlert/ChangeAlert";
+import { ChangeAlert } from "./components/ChangeAlert/ChangeAlert";
 import "./css/styles.css";
 
 export function App() {
@@ -99,7 +99,7 @@ export function App() {
       )}
       <CreateTodoButton setOpenModal={setOpenModal} setOpenForm={setOpenForm} />
 
-      <ChangeAlertWithStorageListener sincronizeTodos={sincronizeTodos} />
+      <ChangeAlert sincronize={sincronizeTodos} />
 
     </>
   );

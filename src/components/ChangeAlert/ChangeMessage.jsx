@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const ChangeMessage = ({toggleShow}) => {
+export const ChangeMessage = ({onToggleShow}) => {
   return (
     <div className="change-message">
       <div className="change-message__background">
@@ -9,7 +9,7 @@ export const ChangeMessage = ({toggleShow}) => {
           <p className="change-message__text">Deseas actualizar la página?</p>
           <button
             className="change-message__button"
-            onClick={() => toggleShow(false)}
+            onClick={onToggleShow}
           >
             Si! 😈
           </button>
