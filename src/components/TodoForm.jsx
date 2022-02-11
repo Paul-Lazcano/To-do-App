@@ -67,16 +67,6 @@ export function TodoForm({ addTodo, setOpenModal, setOpenForm }) {
           className="form__text-area"
           onKeyDown={addNewLineOnTextArea}
         />
-        <p className="change-message__text">Elige la fecha</p>
-        <input
-          value={newDate}
-          type="date"
-          placeholder="20/08/2022"
-          className="form__date"
-          onKeyDown={preventSubmitWithEnter}
-          onChange={onDateInputWrite}
-        />
-        <p className="change-message__text">O si prefieres escribir</p>
         <input
           value={newDate}
           type="text"
