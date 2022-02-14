@@ -5,6 +5,7 @@
 - Marcarlas como completadas
 - Borrar tareas
 - Buscar tareas
+- Editar esas tareas
 
 ## Es mi primera app hecha con React.
 
