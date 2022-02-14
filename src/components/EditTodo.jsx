@@ -70,7 +70,7 @@ export const EditTodo = ({ setOpenModal, setOpenEdit, onCompleteEdit, currentTod
             Cancelar
           </button>
           <button type="submit" className="form__button form__button--add">
-            Añadir
+            Editar
           </button>
         </div>
       </form>

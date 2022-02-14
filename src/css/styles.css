@@ -122,6 +122,7 @@ input {
 .icon {
   font-size: 2.4rem;
   cursor: pointer;
+  transition: 500ms;
 }
 .icon-check {
   color: #727272;
@@ -129,6 +130,14 @@ input {
 .icon-edit {
   color: #727272;
   font-size: 1.6rem;
+  padding: 0rem 1rem;
+  border-right: .2rem solid #29292999;
+  border-left: .2rem solid #29292999;
+  border-radius: .5rem;
+  transition: 300ms;
+}
+.icon-edit:hover {
+  border-bottom: .1rem solid #29292940;
 }
 .icon-edit--disabled {
   display: none;
@@ -229,7 +238,7 @@ input {
   align-items: center;
   width: 80%;
   min-width: 30rem;
-  max-width: 70rem;
+  max-width: 45rem;
   background-color: #181818;
   padding: 3rem 1rem;
   border-radius: 1rem;
